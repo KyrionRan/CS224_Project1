@@ -2,9 +2,9 @@ public class Applicant {
     private String id;
     private String first_name;
     private String last_name;
-    private String score;
+    private int score;
 
-    public Applicant(String id, String first_name, String last_name, String score) {
+    public Applicant(String id, String first_name, String last_name, int score) {
         this.id = id;
         this.first_name = first_name;
         this.last_name = last_name;
@@ -23,7 +23,7 @@ public class Applicant {
         return this.last_name;
     }
 
-    public String getScore() {
+    public int getScore() {
         return this.score;
     }
 }
