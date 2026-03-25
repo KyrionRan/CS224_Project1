@@ -18,6 +18,7 @@ public class Main {
         ArrayList<Applicant> insertionArray = algorithm.insertionSort(arr);
         ArrayList<Applicant> mergeArray = algorithm.mergeSort(arr, 0, arr.size() - 1);
         ArrayList<Applicant> quickArray = algorithm.quickSort(arr, 0, arr.size() - 1);
+        ArrayList<Applicant> heapArray = algorithm.heapSort(arr);
         System.out.println();
     }
 }

@@ -105,4 +105,37 @@ public class Algorithm {
         Collections.swap(arr, leftPointer, highIndex);
         return leftPointer;
     }
+
+    public ArrayList<Applicant> heapSort(ArrayList<Applicant> array) {
+        ArrayList<Applicant> arr = new ArrayList<>(array);
+        heapSortAlgorithm(arr);
+        return arr;
+    }
+
+    private void heapSortAlgorithm(ArrayList<Applicant> arr) {
+        int n = arr.size();
+        for (int i = n / 2 - 1; i >= 0; i--) {
+            heapify(arr, n, i);
+        }
+        for (int i = n - 1; i > 0; i--) {
+            Collections.swap(arr, 0, i);
+            heapify(arr, i, 0);
+        }
+    }
+
+    private void heapify(ArrayList<Applicant> arr, int n, int i) {
+        int smallest = i;
+        int left = 2 * i + 1;
+        int right = 2 * i + 2;
+        if (left < n && arr.get(left).compareTo(arr.get(smallest)) < 0) {
+            smallest = left;
+        }
+        if (right < n && arr.get(right).compareTo(arr.get(smallest)) < 0) {
+            smallest = right;
+        }
+        if (smallest != i) {
+            Collections.swap(arr, i, smallest);
+            heapify(arr, n, smallest);
+        }
+    }
 }
