@@ -14,7 +14,9 @@ public class Main {
         arr.add(new Applicant("9", "Eleonor", "Pentz", 80));
         arr.add(new Applicant("10", "Pamula", "Sterker", 85));
         Algorithm algorithm = new Algorithm();
-        algorithm.insertionSort(arr);
+        ArrayList<Applicant> selectionArray = algorithm.selectionSort(arr);
+        ArrayList<Applicant> insertionArray = algorithm.insertionSort(arr);
+        ArrayList<Applicant> mergeArray = algorithm.mergeSort(arr, 0, arr.size() - 1);
         System.out.println();
     }
 }

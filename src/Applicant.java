@@ -11,20 +11,6 @@ public class Applicant {
         this.score = score;
     }
 
-    public Applicant(Applicant app) {
-        this.id = app.getId();
-        this.first_name = app.getFirst_name();
-        this.last_name = app.getLast_name();
-        this.score = app.getScore();
-    }
-
-    public void copy(Applicant app) {
-        this.id = app.getId();
-        this.first_name = app.getFirst_name();
-        this.last_name = app.getLast_name();
-        this.score = app.getScore();
-    }
-
     public String getId() {
         return this.id;
     }
