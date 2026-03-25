@@ -7,20 +7,8 @@ public class Algorithm {
         for (int i = 0; i < arr.size() - 1; i++) {
             int max = i;
             for (int j = i + 1; j < arr.size(); j++) {
-                if (arr.get(j).getScore() > arr.get(max).getScore()) {
+                if (arr.get(j).compareTo(arr.get(max)) > 0) {
                     max = j;
-                } else if (arr.get(j).getScore() == arr.get(max).getScore()) {
-                    if (arr.get(j).getId().compareTo(arr.get(max).getId()) < 0) {
-                        max = j;
-                    } else if (arr.get(j).getId().compareTo(arr.get(max).getId()) == 0) {
-                        if (arr.get(j).getLast_name().compareTo(arr.get(max).getLast_name()) < 0) {
-                            max = j;
-                        } else if (arr.get(j).getLast_name().compareTo(arr.get(max).getLast_name()) == 0) {
-                            if (arr.get(j).getFirst_name().compareTo(arr.get(max).getFirst_name()) < 0) {
-                                max = j;
-                            }
-                        }
-                    }
                 }
             }
             if (i != max) {
@@ -36,30 +24,9 @@ public class Algorithm {
             Applicant temp = arr.get(i);
             int j = i;
             while (j > 0) {
-                if (temp.getScore() > arr.get(j - 1).getScore()) {
+                if (temp.compareTo(arr.get(j - 1)) > 0) {
                     arr.set(j, arr.get(j - 1));
                     j--;
-                } else if (temp.getScore() == arr.get(j - 1).getScore()) {
-                    if (temp.getId().compareTo(arr.get(j - 1).getId()) < 0) {
-                        arr.set(j, arr.get(j - 1));
-                        j--;
-                    } else if (temp.getId().compareTo(arr.get(j - 1).getId()) == 0) {
-                        if (temp.getLast_name().compareTo(arr.get(j - 1).getLast_name()) < 0) {
-                            arr.set(j, arr.get(j - 1));
-                            j--;
-                        } else if (temp.getLast_name().compareTo(arr.get(j - 1).getLast_name()) == 0) {
-                            if (temp.getFirst_name().compareTo(arr.get(j - 1).getFirst_name()) < 0) {
-                                arr.set(j, arr.get(j - 1));
-                                j--;
-                            } else {
-                                break;
-                            }
-                        } else {
-                            break;
-                        }
-                    } else {
-                        break;
-                    }
                 } else {
                     break;
                 }
@@ -88,33 +55,9 @@ public class Algorithm {
         int left = 0;
         int right = 0;
         while (left < leftArray.size() && right < rightArray.size()) {
-            if (leftArray.get(left).getScore() > rightArray.get(right).getScore()) {
+            if (leftArray.get(left).compareTo(rightArray.get(right)) > 0) {
                 result.add(leftArray.get(left));
                 left++;
-            } else if (leftArray.get(left).getScore() == rightArray.get(right).getScore()) {
-                if (leftArray.get(left).getId().compareTo(rightArray.get(right).getId()) < 0) {
-                    result.add(leftArray.get(left));
-                    left++;
-                } else if (leftArray.get(left).getId().compareTo(rightArray.get(right).getId()) == 0) {
-                    if (leftArray.get(left).getLast_name().compareTo(rightArray.get(right).getLast_name()) < 0) {
-                        result.add(leftArray.get(left));
-                        left++;
-                    } else if (leftArray.get(left).getLast_name().compareTo(rightArray.get(right).getLast_name()) == 0) {
-                        if (leftArray.get(left).getFirst_name().compareTo(rightArray.get(right).getFirst_name()) < 0) {
-                            result.add(leftArray.get(left));
-                            left++;
-                        } else {
-                            result.add(rightArray.get(right));
-                            right++;
-                        }
-                    } else {
-                        result.add(rightArray.get(right));
-                        right++;
-                    }
-                } else {
-                    result.add(rightArray.get(right));
-                    right++;
-                }
             } else {
                 result.add(rightArray.get(right));
                 right++;
