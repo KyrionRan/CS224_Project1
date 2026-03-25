@@ -130,4 +130,36 @@ public class Algorithm {
         }
         return result;
     }
+
+    public ArrayList<Applicant> quickSort(ArrayList<Applicant> array, int lowIndex, int highIndex) {
+        ArrayList<Applicant> arr = new ArrayList<>(array);
+        quickSortAlgorithm(arr, lowIndex, highIndex);
+        return arr;
+    }
+
+    private void quickSortAlgorithm(ArrayList<Applicant> arr, int lowIndex, int highIndex) {
+        if (lowIndex >= highIndex) {
+            return;
+        }
+        Applicant pivot = arr.get(highIndex);
+        int pivotIndex = partition(arr, lowIndex, highIndex, pivot);
+        quickSortAlgorithm(arr, lowIndex, pivotIndex - 1);
+        quickSortAlgorithm(arr, pivotIndex + 1, highIndex);
+    }
+
+    private int partition(ArrayList<Applicant> arr, int lowIndex, int highIndex, Applicant pivot) {
+        int leftPointer = lowIndex;
+        int rightPointer = highIndex;
+        while (leftPointer < rightPointer) {
+            while (arr.get(leftPointer).compareTo(pivot) >= 0 && leftPointer < rightPointer) {
+                leftPointer++;
+            }
+            while (arr.get(rightPointer).compareTo(pivot) <= 0 && leftPointer < rightPointer) {
+                rightPointer--;
+            }
+            Collections.swap(arr, leftPointer, rightPointer);
+        }
+        Collections.swap(arr, leftPointer, highIndex);
+        return leftPointer;
+    }
 }
