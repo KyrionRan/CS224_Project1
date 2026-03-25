@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Algorithm {
-    public ArrayList<Applicant> selectionSort(ArrayList<Applicant> arr) {
+    public void selectionSort(ArrayList<Applicant> arr) {
         for (int i = 0; i < arr.size() - 1; i++) {
             int max = i;
             for (int j = i + 1; j < arr.size(); j++) {
@@ -27,6 +27,44 @@ public class Algorithm {
                 arr.get(max).copy(temp);
             }
         }
-        return arr;
+    }
+
+    public void insertionSort(ArrayList<Applicant> arr) {
+        for (int i = 1; i < arr.size(); i++) {
+            Applicant temp = new Applicant(arr.get(i));
+            int j = i;
+            while (j > 0) {
+                if (temp.getScore() > arr.get(j - 1).getScore()) {
+                    arr.get(j).copy(arr.get(j - 1));
+                    j--;
+                } else if (temp.getScore() == arr.get(j - 1).getScore()) {
+                    if (temp.getId().compareTo(arr.get(j - 1).getId()) < 0) {
+                        arr.get(j).copy(arr.get(j - 1));
+                        j--;
+                    } else if (temp.getId().compareTo(arr.get(j - 1).getId()) == 0) {
+                        if (temp.getLast_name().compareTo(arr.get(j - 1).getLast_name()) < 0) {
+                            arr.get(j).copy(arr.get(j - 1));
+                            j--;
+                        } else if (temp.getLast_name().compareTo(arr.get(j - 1).getLast_name()) == 0) {
+                            if (temp.getFirst_name().compareTo(arr.get(j - 1).getFirst_name()) < 0) {
+                                arr.get(j).copy(arr.get(j - 1));
+                                j--;
+                            } else {
+                                break;
+                            }
+                        } else {
+                            break;
+                        }
+                    } else {
+                        break;
+                    }
+                } else {
+                    break;
+                }
+            }
+            if (j != i) {
+                arr.get(j).copy(temp);
+            }
+        }
     }
 }
