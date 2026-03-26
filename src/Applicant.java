@@ -1,17 +1,17 @@
 public class Applicant implements Comparable<Applicant> {
-    private String id;
+    private int id;
     private String first_name;
     private String last_name;
     private int score;
 
-    public Applicant(String id, String first_name, String last_name, int score) {
+    public Applicant(int id, String first_name, String last_name, int score) {
         this.id = id;
         this.first_name = first_name;
         this.last_name = last_name;
         this.score = score;
     }
 
-    public String getId() {
+    public int getId() {
         return this.id;
     }
 
@@ -32,8 +32,8 @@ public class Applicant implements Comparable<Applicant> {
         if (this.score != other.score) {
             return Integer.compare(this.score, other.score);
         }
-        if (!this.id.equals(other.id)) {
-            return other.id.compareTo(this.id);
+        if (this.id != other.id) {
+            return Integer.compare(other.id, this.id);
         }
         if (!this.last_name.equals(other.last_name)) {
             return other.last_name.compareTo(this.last_name);
